@@ -21,7 +21,7 @@ GitHub: `mogeldev/unfold-mpv`. Single `main` branch, history was squashed to one
 
 ## Build and checks
 - `./gradlew detekt assembleRelease` (JDK 21). Release APKs are unsigned; `preview` build type is debug-signed.
-- No Android SDK on the dev machine (`ANDROID_HOME` points to a missing folder), so local builds do not work. There is no CI either: GitHub Actions workflows were removed on purpose. Unverified changes stay unverified unless a workflow is re-added.
+- The Android SDK on the dev machine is at `D:\Android\Sdk`, but the `ANDROID_HOME` environment variable points to a missing folder: set `ANDROID_HOME=D:\Android\Sdk` for the build (or put `sdk.dir` in `local.properties`). An emulator (`scda_x64`) is available for testing. There is no CI: GitHub Actions workflows were removed on purpose.
 
 ## Git and README
 - Commits use the repo-local identity `mogeldev` with the GitHub noreply address; keep it that way (public repo, no real email).
