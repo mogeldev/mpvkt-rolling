@@ -1,1 +1,1 @@
-mpvKt: MPV based media player
+unfold-mpv: MPV based media player

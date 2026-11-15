@@ -100,7 +100,7 @@ class CrashActivity : ComponentActivity() {
   companion object {
     suspend fun shareLogs(deviceInfo: String, exceptionString: String? = null, logcat: String, activity: Activity) {
       withContext(NonCancellable) {
-        val file = File(activity.cacheDir, "mpvKt_logs.txt")
+        val file = File(activity.cacheDir, "unfold-mpv_logs.txt")
         if (file.exists()) file.delete()
         file.createNewFile()
         file.appendText(concatLogs(deviceInfo, exceptionString, logcat))

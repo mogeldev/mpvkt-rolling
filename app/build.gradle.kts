@@ -21,7 +21,7 @@ android {
   compileSdk = 37
 
   defaultConfig {
-    applicationId = "io.github.mogeldev.mpvktrolling"
+    applicationId = "io.github.mogeldev.unfoldmpv"
     minSdk = 24
     targetSdk = 36
     versionCode = 12

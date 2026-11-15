@@ -20,5 +20,5 @@ dependencyResolutionManagement {
   }
 }
 
-rootProject.name = "mpvKt"
+rootProject.name = "unfold-mpv"
 include(":app")

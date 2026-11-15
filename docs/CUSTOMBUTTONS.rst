@@ -1,7 +1,7 @@
 CUSTOM BUTTONS
 ==============
 
-Custom buttons provides a way to execute lua code by pressing a button in the player. mpvKt also provides an interface to interact with some parts of the player.
+Custom buttons provides a way to execute lua code by pressing a button in the player. unfold-mpv also provides an interface to interact with some parts of the player.
 
 The interface is defined in a file placed in the ``scripts`` directory and can be accessed through the ``mpvkt`` table.
 

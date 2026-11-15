@@ -89,4 +89,4 @@ sealed interface CustomButtonDialog {
   data class Delete(val customButton: CustomButtonEntity) : CustomButtonDialog
 }
 
-private const val CUSTOM_BUTTONS_DOC_URL = "https://github.com/abdallahmehiz/mpvKt/blob/main/docs/CUSTOMBUTTONS.rst"
+private const val CUSTOM_BUTTONS_DOC_URL = "https://github.com/mogeldev/unfold-mpv/blob/main/docs/CUSTOMBUTTONS.rst"

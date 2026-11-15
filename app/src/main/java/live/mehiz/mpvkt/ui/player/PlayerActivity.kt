@@ -501,4 +501,4 @@ class PlayerActivity : AppCompatActivity() {
   }
 }
 
-const val TAG = "mpvKt"
+const val TAG = "unfold-mpv"

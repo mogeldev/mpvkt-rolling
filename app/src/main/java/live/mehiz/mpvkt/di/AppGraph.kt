@@ -62,7 +62,7 @@ interface AppGraph : ViewModelGraph {
   @Provides
   @SingleIn(AppScope::class)
   fun provideDatabase(context: Context): MpvKtDatabase = Room
-    .databaseBuilder(context, MpvKtDatabase::class.java, "mpvKt.db")
+    .databaseBuilder(context, MpvKtDatabase::class.java, "unfold-mpv.db")
     .addMigrations(migrations = Migrations)
     .build()
 
