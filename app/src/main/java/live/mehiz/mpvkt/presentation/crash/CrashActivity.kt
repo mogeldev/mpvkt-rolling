@@ -104,7 +104,7 @@ class CrashActivity : ComponentActivity() {
         if (file.exists()) file.delete()
         file.createNewFile()
         file.appendText(concatLogs(deviceInfo, exceptionString, logcat))
-        val uri = FileProvider.getUriForFile(activity, BuildConfig.APPLICATION_ID + ".provider", file)
+        val uri = FileProvider.getUriForFile(activity, activity.packageName + ".provider", file)
         val intent = Intent(Intent.ACTION_SEND)
         intent.putExtra(Intent.EXTRA_STREAM, uri)
         intent.clipData = ClipData.newRawUri(null, uri)

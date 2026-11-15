@@ -14,6 +14,11 @@ GitHub: `mogeldev/unfold-mpv`. Single `main` branch, history was squashed to one
 ## Dependencies
 - mpv comes from `io.github.abdallahmehiz:mpv-android-lib` (version in `gradle/libs.versions.toml`), built from a fork of mpv-android/mpv-android. Latest published version is the newest available; a newer mpv/FFmpeg needs a custom build of that library.
 
+## Embedding in Unfold (`player/`)
+- `player/` builds the same sources as `app/` as an Android library; unfold-jellyfin-player includes it as the git submodule `android/mpvkt` and starts `PlayerActivity` from its own WebView app.
+- Plugins and dependencies are duplicated in `player/build.gradle.kts`: change both when `app/build.gradle.kts` changes. Unfold takes all versions from `gradle/libs.versions.toml`.
+- Intent extras Unfold relies on, besides the mpv-android ones: `media_id` (key for the saved playback state) and `vid`/`aid`/`sid`/`position`, which win over the saved state. `MediaPlaybackService.currentPositionMs()` is read for progress reports.
+
 ## Build and checks
 - `./gradlew detekt assembleRelease` (JDK 21). Release APKs are unsigned; `preview` build type is debug-signed.
 - No Android SDK on the dev machine (`ANDROID_HOME` points to a missing folder), so local builds do not work. There is no CI either: GitHub Actions workflows were removed on purpose. Unverified changes stay unverified unless a workflow is re-added.

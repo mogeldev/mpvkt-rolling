@@ -22,3 +22,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "unfold-mpv"
 include(":app")
+include(":player")

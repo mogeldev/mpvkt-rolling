@@ -123,6 +123,9 @@ class MediaPlaybackService : MediaBrowserServiceCompat() {
       mpv.command("seek", (value / 1000f).toString(), "absolute")
     }
 
+  /** For apps that embed the player (e.g. to report progress to a media server); -1 before mpv is set up. */
+  fun currentPositionMs(): Long = if (::mpv.isInitialized && mpv.isInitialized) positionMs else -1
+
   private lateinit var mediaSession: MediaSessionCompat
   private var mediaThumbnail: Bitmap? = null
 
@@ -498,12 +501,27 @@ class MediaPlaybackService : MediaBrowserServiceCompat() {
 
   private fun onFileLoaded() {
     val intent = playIntent ?: return
-    fileName = getFileName(intent)
+    // A caller that streams (e.g. Unfold) has URLs without a useful name; it names the media for the saved state
+    fileName = intent.getStringExtra("media_id") ?: getFileName(intent)
     setIntentExtras(intent.extras)
+    // mpv-android-lib starts mpv with pause=yes; without this every file opens paused
+    paused = false
     val title = mpv.getPropertyString("media-title")
     if (title.isNullOrBlank() || title.isDigitsOnly()) mpv.setPropertyString("media-title", fileName)
     val name = fileName
-    ioScope.launch { loadVideoPlaybackState(name) }
+    val extras = intent.extras
+    ioScope.launch {
+      loadVideoPlaybackState(name)
+      applyCallerChoice(extras)
+    }
+  }
+
+  // Tracks and position the caller chose explicitly win over the state saved here (the caller may have newer data,
+  // e.g. a media server that knows where playback stopped on another device). vid/aid/sid as mpv values: "1", "no".
+  private fun applyCallerChoice(extras: android.os.Bundle?) {
+    if (extras == null) return
+    for (k in listOf("vid", "aid", "sid")) extras.getString(k)?.let { mpv.setPropertyString(k, it) }
+    if (extras.containsKey("position")) mpv.setPropertyInt("time-pos", extras.getInt("position") / 1000)
   }
 
   private fun setIntentExtras(extras: android.os.Bundle?) {
