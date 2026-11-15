@@ -25,7 +25,7 @@ android {
       useSupportLibrary = true
     }
     // libraries get no VERSION_NAME; keep it equal to versionName in app/build.gradle.kts
-    buildConfigField("String", "VERSION_NAME", "\"0.1.6\"")
+    buildConfigField("String", "VERSION_NAME", "\"0.2.0\"")
     buildConfigField("String", "GIT_SHA", "\"${getCommitSha()}\"")
     buildConfigField("int", "GIT_COUNT", getCommitCount())
   }
