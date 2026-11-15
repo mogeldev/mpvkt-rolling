@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name" translatable="false">mpvKt-rolling</string>
+    <string name="app_name" translatable="false">unfold-mpv</string>
 
     <string name="generic_reset">Reset</string>
     <string name="generic_share">Bagikan</string>

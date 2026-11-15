@@ -1,4 +1,4 @@
-# <img alt="app icon" src=".github/assets/app_icon.svg" width="48" /> mpvKt-rolling
+# <img alt="app icon" src=".github/assets/app_icon.svg" width="48" /> unfold-mpv
 A media player for Android based on mpv-android aiming to provide a *nicer* user interface over the original.
 
 This is my personal fork of mpvKt by abdallahmehiz. It is public and you are welcome to use it, but it comes without any guarantees or support. Licensed under Apache 2.0.
